@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.googlescholar.GoogleScholarProjectApplicationTests" time="0.021" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.googlescholar.ResponseDiagnosticTest" time="0.112" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -61,9 +61,68 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="contextLoads" classname="com.googlescholar.GoogleScholarProjectApplicationTests" time="0.005">
-    <system-out><![CDATA[2025-10-02T18:06:27.747-06:00  INFO 20020 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.googlescholar.GoogleScholarProjectApplicationTests]: GoogleScholarProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-10-02T18:06:27.751-06:00  INFO 20020 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.googlescholar.GoogleScholarProjectApplication for test class com.googlescholar.GoogleScholarProjectApplicationTests
+  <testcase name="diagnoseResponseIssue" classname="com.googlescholar.ResponseDiagnosticTest" time="0.111">
+    <system-out><![CDATA[🔍 DIAGNÓSTICO DE RESPUESTA
+============================
+
+📡 URL de prueba:
+https://serpapi.com/search?engine=google_scholar&q=machine+learning&api_key=3c80b3f19d74557d14f0bdd138545d703f072aca20e602649f471e2a...[API_KEY]
+
+2025-10-02T18:06:27.772-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : HTTP GET https://serpapi.com/search?engine=google_scholar&q=machine+learning&api_key=3c80b3f19d74557d14f0bdd138545d703f072aca20e602649f471e2a387a987a&num=5&hl=en
+2025-10-02T18:06:27.772-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2025-10-02T18:06:27.873-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Response 200 OK
+2025-10-02T18:06:27.874-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "application/json;charset=utf-8"
+✅ Status: 200 OK
+📄 Response Length: 16407 characters
+
+🔍 ANÁLISIS DE CAMPOS:
+✅ search_metadata: PRESENTE
+   └─ Status: Success
+✅ search_parameters: PRESENTE
+   └─ Query: machine learning
+✅ search_information: PRESENTE
+✅ organic_results: PRESENTE
+   └─ Número de resultados: 5
+   └─ Primer resultado:
+      └─ Título: Machine learning
+      └─ Link: https://books.google.com/books?hl=en&lr=&id=ctM-EAAAQBAJ&oi=fnd&pg=PR6&dq=machine+learning&ots=o_NqX3Sy3u&sig=IlLMK1cT5HF5HL5gtYUz3EyVHn8
+✅ pagination: PRESENTE
+   └─ Página actual: 1
+   └─ Siguiente página: https://scholar.google.com/scholar?start=5&q=machine+learning&hl=en&num=5&as_sdt=0,5
+
+📋 RESPUESTA RAW (primeros 1000 caracteres):
+{
+  "search_metadata": {
+    "id": "68df09ad932b0e99ecc8ad7e",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/82c76248870645ab/68df09ad932b0e99ecc8ad7e.json",
+    "created_at": "2025-10-02 23:24:29 UTC",
+    "processed_at": "2025-10-02 23:24:29 UTC",
+    "google_scholar_url": "https://scholar.google.com/scholar?q=machine+learning&hl=en&num=5",
+    "raw_html_file": "https://serpapi.com/searches/82c76248870645ab/68df09ad932b0e99ecc8ad7e.html",
+    "total_time_taken": 10.36
+  },
+  "search_parameters": {
+    "engine": "google_scholar",
+    "q": "machine learning",
+    "hl": "en",
+    "num": "5"
+  },
+  "search_information": {
+    "organic_results_state": "Results for exact spelling",
+    "total_results": 5770000,
+    "time_taken_displayed": 0.09,
+    "query_displayed": "machine learning"
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Machine learning",
+      "result_id": "EQ8shYj8Ai8J",
+      "type": "Book",
+      "link": "https://books.g
+
+... [contenido truncado] ...
 ]]></system-out>
   </testcase>
 </testsuite>

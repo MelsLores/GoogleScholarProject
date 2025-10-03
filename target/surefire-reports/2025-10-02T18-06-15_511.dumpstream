@@ -1,4 +1,4 @@
-# Created at 2025-10-02T16:26:57.117
+# Created at 2025-10-02T18:06:15.863
 Boot Manifest-JAR contains absolute paths in classpath 'D:\Descargas\scidataflow-json-csv-integration (2)\scidataflow-json-csv-integration\GoogleScholarProject\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root

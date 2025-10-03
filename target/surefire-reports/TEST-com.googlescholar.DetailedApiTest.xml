@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.googlescholar.GoogleScholarProjectApplicationTests" time="0.021" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.googlescholar.DetailedApiTest" time="1.573" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -61,9 +61,44 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="contextLoads" classname="com.googlescholar.GoogleScholarProjectApplicationTests" time="0.005">
-    <system-out><![CDATA[2025-10-02T18:06:27.747-06:00  INFO 20020 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.googlescholar.GoogleScholarProjectApplicationTests]: GoogleScholarProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-10-02T18:06:27.751-06:00  INFO 20020 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.googlescholar.GoogleScholarProjectApplication for test class com.googlescholar.GoogleScholarProjectApplicationTests
+  <testcase name="testScholarSearchStructure" classname="com.googlescholar.DetailedApiTest" time="1.571">
+    <system-out><![CDATA[🔬 Testing detailed Google Scholar API structure...
+📡 Making API call...
+2025-10-02T18:06:25.408-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : HTTP GET https://serpapi.com/search?engine=google_scholar&q=artificial+intelligence&api_key=3c80b3f19d74557d14f0bdd138545d703f072aca20e602649f471e2a387a987a&num=5
+2025-10-02T18:06:25.408-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2025-10-02T18:06:26.959-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Response 200 OK
+2025-10-02T18:06:26.960-06:00 DEBUG 20020 --- [           main] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "application/json;charset=utf-8"
+✅ API call successful!
+
+📊 Search Metadata:
+  Status: Success
+  Total time: 1.41s
+
+📚 Found 5 organic results:
+
+  📄 Result 1:
+    Position: 1
+    Title: Artificial intelligence
+    Citations: 474
+    Year: EB Hunt - 2014 - books.google.com
+
+  📄 Result 2:
+    Position: 2
+    Title: Artificial intelligence in medicine
+    Citations: 1483
+    Year: J Holmes, L Sacchi, R Bellazzi - Ann R Coll Surg Engl, 2004 - Springer
+
+  📄 Result 3:
+    Position: 3
+    Title: Quo vadis artificial intelligence?
+    Citations: 673
+    Year: Y Jiang, X Li, H Luo, S Yin, O Kaynak - Discover Artificial Intelligence, 2022 - Springer
+
+📖 Pagination:
+  Current page: 1
+  Next page available: Yes
+
+🎯 Google Scholar API integration is working perfectly!
 ]]></system-out>
   </testcase>
 </testsuite>

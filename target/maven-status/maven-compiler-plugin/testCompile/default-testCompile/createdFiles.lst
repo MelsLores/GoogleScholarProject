@@ -1,1 +1,10 @@
+com\googlescholar\ApiTest.class
+com\googlescholar\ResponseDiagnosticTest.class
+com\googlescholar\AuthorApiComplianceTest.class
+com\googlescholar\SimpleApiTest.class
+com\googlescholar\FinalWorkingTest.class
+com\googlescholar\EndpointApiTest.class
+com\googlescholar\FinalComplianceTest.class
+com\googlescholar\FunctionalityVerificationTest.class
+com\googlescholar\DetailedApiTest.class
 com\googlescholar\GoogleScholarProjectApplicationTests.class
