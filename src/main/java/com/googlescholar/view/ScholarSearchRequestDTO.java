@@ -34,12 +34,12 @@ public class ScholarSearchRequestDTO {
     private String lr; // Language restrictions
 
     // Pagination
-    @Min(value = 0, message = "Start offset must be non-negative")
-    private Integer start = 0;
+    @Min(value = 0, message = "Page start offset must be non-negative")
+    private Integer pageStart = 0;
 
-    @Min(value = 1, message = "Number of results must be at least 1")
-    @Max(value = 20, message = "Number of results cannot exceed 20")
-    private Integer num = 10;
+    @Min(value = 1, message = "Page size must be at least 1")
+    @Max(value = 20, message = "Page size cannot exceed 20")
+    private Integer pageSize = 10;
 
     // Search Type and Filters
     private String asSdt; // Search type/filter
@@ -168,27 +168,27 @@ public class ScholarSearchRequestDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
-    public Integer getStart() {
-        return start;
+    public Integer getPageStart() {
+        return pageStart;
     }
 
-    public void setStart(Integer start) {
-        this.start = start;
+    public void setPageStart(Integer pageStart) {
+        this.pageStart = pageStart;
     }
 
     /**
-     * Gets the number of results to return
+     * Gets the page size for pagination
      * 
-     * @return the maximum number of results
+     * @return the maximum number of results per page
      * @author Melany Rivera
      * @since October 2, 2025
      */
-    public Integer getNum() {
-        return num;
+    public Integer getPageSize() {
+        return pageSize;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
     public String getAsSdt() {
@@ -269,8 +269,8 @@ public class ScholarSearchRequestDTO {
                 "q='" + q + '\'' +
                 ", asYlo=" + asYlo +
                 ", asYhi=" + asYhi +
-                ", start=" + start +
-                ", num=" + num +
+                ", pageStart=" + pageStart +
+                ", pageSize=" + pageSize +
                 ", hl='" + hl + '\'' +
                 '}';
     }

@@ -1,6 +1,7 @@
 package com.googlescholar.view;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /**
@@ -10,13 +11,25 @@ import java.util.List;
  * @author Melany Rivera
  * @since October 2, 2025
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ScholarSearchResponseDTO {
 
+    @JsonProperty("search_metadata")
     private SearchMetadata searchMetadata;
+    
+    @JsonProperty("search_parameters")
     private SearchParameters searchParameters;
+    
+    @JsonProperty("search_information")
     private SearchInformation searchInformation;
+    
+    @JsonProperty("organic_results")
     private List<OrganicResult> organicResults;
+    
+    @JsonProperty("related_searches")
     private List<RelatedSearch> relatedSearches;
+    
+    @JsonProperty("pagination")
     private Pagination pagination;
 
     /**
@@ -84,14 +97,27 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SearchMetadata {
         private String id;
         private String status;
+        
+        @JsonProperty("json_endpoint")
         private String jsonEndpoint;
-        private LocalDateTime createdAt;
-        private LocalDateTime processedAt;
+        
+        @JsonProperty("created_at")
+        private String createdAt;
+        
+        @JsonProperty("processed_at")
+        private String processedAt;
+        
+        @JsonProperty("google_scholar_url")
         private String googleScholarUrl;
+        
+        @JsonProperty("raw_html_file")
         private String rawHtmlFile;
+        
+        @JsonProperty("total_time_taken")
         private Double totalTimeTaken;
 
         // Getters and Setters
@@ -104,11 +130,11 @@ public class ScholarSearchResponseDTO {
         public String getJsonEndpoint() { return jsonEndpoint; }
         public void setJsonEndpoint(String jsonEndpoint) { this.jsonEndpoint = jsonEndpoint; }
 
-        public LocalDateTime getCreatedAt() { return createdAt; }
-        public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+        public String getCreatedAt() { return createdAt; }
+        public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 
-        public LocalDateTime getProcessedAt() { return processedAt; }
-        public void setProcessedAt(LocalDateTime processedAt) { this.processedAt = processedAt; }
+        public String getProcessedAt() { return processedAt; }
+        public void setProcessedAt(String processedAt) { this.processedAt = processedAt; }
 
         public String getGoogleScholarUrl() { return googleScholarUrl; }
         public void setGoogleScholarUrl(String googleScholarUrl) { this.googleScholarUrl = googleScholarUrl; }
@@ -126,6 +152,7 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SearchParameters {
         private String engine;
         private String q;
@@ -144,10 +171,19 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SearchInformation {
+        @JsonProperty("total_results")
         private Long totalResults;
+        
+        @JsonProperty("time_taken_displayed")
         private Double timeTakenDisplayed;
+        
+        @JsonProperty("query_displayed")
         private String queryDisplayed;
+        
+        @JsonProperty("organic_results_state")
+        private String organicResultsState;
 
         // Getters and Setters
         public Long getTotalResults() { return totalResults; }
@@ -158,6 +194,9 @@ public class ScholarSearchResponseDTO {
 
         public String getQueryDisplayed() { return queryDisplayed; }
         public void setQueryDisplayed(String queryDisplayed) { this.queryDisplayed = queryDisplayed; }
+        
+        public String getOrganicResultsState() { return organicResultsState; }
+        public void setOrganicResultsState(String organicResultsState) { this.organicResultsState = organicResultsState; }
     }
 
     /**
@@ -166,14 +205,23 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class OrganicResult {
         private Integer position;
         private String title;
+        
+        @JsonProperty("result_id")
         private String resultId;
+        
         private String link;
         private String snippet;
+        
+        @JsonProperty("publication_info")
         private PublicationInfo publicationInfo;
+        
         private List<Resource> resources;
+        
+        @JsonProperty("inline_links")
         private InlineLinks inlineLinks;
 
         // Getters and Setters
@@ -204,6 +252,7 @@ public class ScholarSearchResponseDTO {
         /**
          * Nested class for publication information
          */
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static class PublicationInfo {
             private String summary;
 
@@ -214,9 +263,13 @@ public class ScholarSearchResponseDTO {
         /**
          * Nested class for resources (PDFs, etc.)
          */
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static class Resource {
             private String title;
+            
+            @JsonProperty("file_format")
             private String fileFormat;
+            
             private String link;
 
             public String getTitle() { return title; }
@@ -232,11 +285,20 @@ public class ScholarSearchResponseDTO {
         /**
          * Nested class for inline links (citations, versions, etc.)
          */
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static class InlineLinks {
+            @JsonProperty("serpapi_cite_link")
             private String serpApiCiteLink;
+            
+            @JsonProperty("cited_by")
             private CitedBy citedBy;
+            
+            @JsonProperty("related_pages_link")
             private String relatedPagesLink;
+            
             private Versions versions;
+            
+            @JsonProperty("cached_page_link")
             private String cachedPageLink;
 
             public String getSerpApiCiteLink() { return serpApiCiteLink; }
@@ -257,10 +319,15 @@ public class ScholarSearchResponseDTO {
             /**
              * Nested class for cited by information
              */
+            @JsonIgnoreProperties(ignoreUnknown = true)
             public static class CitedBy {
                 private Integer total;
                 private String link;
+                
+                @JsonProperty("cites_id")
                 private String citesId;
+                
+                @JsonProperty("serpapi_scholar_link")
                 private String serpApiScholarLink;
 
                 public Integer getTotal() { return total; }
@@ -279,10 +346,15 @@ public class ScholarSearchResponseDTO {
             /**
              * Nested class for versions information
              */
+            @JsonIgnoreProperties(ignoreUnknown = true)
             public static class Versions {
                 private Integer total;
                 private String link;
+                
+                @JsonProperty("cluster_id")
                 private String clusterId;
+                
+                @JsonProperty("serpapi_scholar_link")
                 private String serpApiScholarLink;
 
                 public Integer getTotal() { return total; }
@@ -306,6 +378,7 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class RelatedSearch {
         private String query;
         private String link;
@@ -323,9 +396,12 @@ public class ScholarSearchResponseDTO {
      * @author Melany Rivera
      * @since October 2, 2025
      */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Pagination {
         private Integer current;
         private String next;
+        
+        @JsonProperty("other_pages")
         private Object otherPages;
 
         public Integer getCurrent() { return current; }
